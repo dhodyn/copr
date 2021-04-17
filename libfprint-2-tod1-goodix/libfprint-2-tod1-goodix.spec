@@ -13,7 +13,7 @@ BuildRequires:  git
 Proprietary driver for the Goodix fingerprint reader on the Dell XPS 13 - direct from Dell's Ubuntu repo
 
 %prep
-git clone %{url}.git
+git clone %{url}
 cd libfprint-2-tod1-goodix
 git checkout 0.0.6-0ubuntu1_somerville1
 
