@@ -7,7 +7,7 @@ Summary:        Proprietary driver for the Goodix fingerprint reader on the Dell
 License:        custom
 URL:            https://git.launchpad.net/~oem-solutions-engineers/libfprint-2-tod1-goodix/+git/libfprint-2-tod1-goodix
 
-BuildRequires:  libfprint-tod
+BuildRequires:  git
 
 %description
 Proprietary driver for the Goodix fingerprint reader on the Dell XPS 13 - direct from Dell's Ubuntu repo
