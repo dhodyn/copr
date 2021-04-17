@@ -21,8 +21,8 @@ git checkout 0.0.6-0ubuntu1_somerville1
 
 %install
 cd libfprint-2-tod1-goodix
-install -Dm 755 usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/libfprint-tod-goodix-53xc-%{version}.so %{buildroot}/usr/lib/libfprint-2/tod-1/
-install -Dm 644 lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules %{buildroot}/usr/lib/udev/rules.d/
+install -Dm 755 usr/lib/x86_64-linux-gnu/libfprint-2/tod-1/libfprint-tod-goodix-53xc-%{version}.so %{buildroot}/usr/lib/libfprint-2/tod-1/libfprint-tod-goodix-53xc-%{version}.so
+install -Dm 644 lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules %{buildroot}/usr/lib/udev/rules.d/60-libfprint-2-tod1-goodix.rules
 
 %files
 /usr/lib/libfprint-2/tod-1/libfprint-tod-goodix-53xc-%{version}.so
