@@ -1,7 +1,7 @@
 Name:           libfprint-tod
 
-Version:        1.90.7+git20210222+tod1
-Release:        2%{?dist}
+Version:        1.94.5+tod1
+Release:        1%{?dist}
 Summary:        Toolkit for fingerprint scanner (TOD version)
 
 License:        LGPLv2+
@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(gusb) >= 0.3.0
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  gtk-doc
+BuildRequires:  libgudev-devel
 # For the udev.pc to install the rules
 BuildRequires:  systemd
 BuildRequires:  gobject-introspection-devel
@@ -42,40 +43,35 @@ developing applications that use %{name}.
 
 %build
 # Include the virtual image driver for integration tests
-%meson -Dx11-examples=false -Ddrivers=all
+%meson -Ddrivers=all
 %meson_build
 
 %install
 %meson_install
-mkdir -vp %{buildroot}/usr/lib64/libfprint-2/tod-1
 
 %ldconfig_scriptlets
 
 %check
-%meson_test
-
+%meson_test -t 4
+ 
 %files
 %license COPYING
-%doc NEWS TODO THANKS AUTHORS README
+%doc NEWS THANKS AUTHORS README.md
 %{_libdir}/*.so.*
 %{_libdir}/girepository-1.0/*.typelib
-/usr/lib/udev/hwdb.d/60-autosuspend-libfprint-2.hwdb
-%dir /usr/lib64/libfprint-2/tod-1
-
-
+%{_udevhwdbdir}/60-autosuspend-libfprint-2.hwdb
+%{_udevrulesdir}/70-libfprint-2.rules
+ 
 %files devel
 %doc HACKING.md
 %{_includedir}/*
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/%{name}-2.pc
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/gtk-doc/html/libfprint-2/
 %{_libdir}/pkgconfig/libfprint-2-tod-1.pc
 %{_libdir}/pkgconfig/libfprint-2.pc
 
-
 %changelog
-* Tue Mar 30 2021 Kevin Anderson <andersonkw2@gmail.com> - 1.90.7+git20210222+tod1-2
-- Add directory for tod drivers
+%autochangelog
 
-* Tue Mar 30 2021 Kevin Anderson <andersonkw2@gmail.com> - 1.90.7+git20210222+tod1
-- Initial Release
