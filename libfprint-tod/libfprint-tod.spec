@@ -51,29 +51,39 @@ developing applications that use %{name}.
 
 %install
 %meson_install
+mkdir -vp %{buildroot}/usr/lib64/libfprint-2/tod-1
 
 %ldconfig_scriptlets
 
 %check
- 
+
+
 %files
 %license COPYING
-%doc NEWS THANKS AUTHORS README.md
+%doc NEWS THANKS AUTHORS
 %{_libdir}/*.so.*
 %{_libdir}/girepository-1.0/*.typelib
-%{_udevhwdbdir}/60-autosuspend-libfprint-2.hwdb
-%{_udevrulesdir}/70-libfprint-2.rules
- 
+/usr/lib/udev/hwdb.d/60-autosuspend-libfprint-2.hwdb
+/usr/lib/udev/rules.d/70-libfprint-2.rules
+%dir /usr/lib64/libfprint-2/tod-1
+
+
 %files devel
 %doc HACKING.md
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/%{name}-2.pc
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/gtk-doc/html/libfprint-2/
 %{_libdir}/pkgconfig/libfprint-2-tod-1.pc
 %{_libdir}/pkgconfig/libfprint-2.pc
 
+
 %changelog
-* Tue Mar 22 2023 update to 1.94.5-tod1
+* Wed Mar 22 2023 Navneet Dhody <navneet.dhody@gmail.com> update to 1.94.5-tod1
+
+* Tue Mar 30 2021 Kevin Anderson <andersonkw2@gmail.com> - 1.90.7+git20210222+tod1-2
+- Add directory for tod drivers
+
+* Tue Mar 30 2021 Kevin Anderson <andersonkw2@gmail.com> - 1.90.7+git20210222+tod1
+- Initial Release
 
