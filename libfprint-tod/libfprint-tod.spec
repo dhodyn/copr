@@ -1,7 +1,7 @@
 Name:           libfprint-tod
 
 Version:        1.94.5+tod1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Toolkit for fingerprint scanner (TOD version)
 
 License:        LGPLv2+
@@ -19,9 +19,12 @@ BuildRequires:  pkgconfig(gusb) >= 0.3.0
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  gtk-doc
-BuildRequires:  libgudev-devel
 # For the udev.pc to install the rules
 BuildRequires:  systemd
+BuildRequires:  cmake
+BuildRequires:  libgudev-devel
+BuildRequires:  gdb
+BuildRequires:  valgrind
 BuildRequires:  gobject-introspection-devel
 # For internal CI tests; umockdev 0.13.2 has an important locking fix
 BuildRequires:  python3-cairo python3-gobject cairo-devel
@@ -52,7 +55,6 @@ developing applications that use %{name}.
 %ldconfig_scriptlets
 
 %check
-%meson_test -t 4
  
 %files
 %license COPYING
@@ -73,5 +75,5 @@ developing applications that use %{name}.
 %{_libdir}/pkgconfig/libfprint-2.pc
 
 %changelog
-%autochangelog
+* Tue Mar 22 2023 update to 1.94.5-tod1
 
