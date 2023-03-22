@@ -29,6 +29,7 @@ BuildRequires:  gobject-introspection-devel
 # For internal CI tests; umockdev 0.13.2 has an important locking fix
 BuildRequires:  python3-cairo python3-gobject cairo-devel
 BuildRequires:  umockdev >= 0.13.2
+Conflicts:      libfprint
 
 %description
 libfprint-tod offers support for consumer fingerprint reader devices.
@@ -79,6 +80,8 @@ mkdir -vp %{buildroot}/usr/lib64/libfprint-2/tod-1
 
 
 %changelog
+* Wed Mar 22 2023 Navneet Dhody <navneet.dhody@gmail.com> add Conflicts: libfprint
+
 * Wed Mar 22 2023 Navneet Dhody <navneet.dhody@gmail.com> update to 1.94.5-tod1
 
 * Tue Mar 30 2021 Kevin Anderson <andersonkw2@gmail.com> - 1.90.7+git20210222+tod1-2
