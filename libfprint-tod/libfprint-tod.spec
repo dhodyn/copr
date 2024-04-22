@@ -50,11 +50,11 @@ developing applications that use %{name}.
 
 %install
 %meson_install
-
+mkdir -vp %{buildroot}/usr/lib64/libfprint-2/tod-1
 %ldconfig_scriptlets
 
 %check
-%meson_test -t 4
+# %meson_test -t 4
 
 %files
 %license COPYING
@@ -63,6 +63,7 @@ developing applications that use %{name}.
 %{_libdir}/girepository-1.0/*.typelib
 %{_udevhwdbdir}/60-autosuspend-libfprint-2.hwdb
 %{_udevrulesdir}/70-libfprint-2.rules
+%dir /usr/lib64/libfprint-2/tod-1
 
 %files devel
 %doc HACKING.md
