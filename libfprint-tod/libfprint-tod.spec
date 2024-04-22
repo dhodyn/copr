@@ -1,7 +1,7 @@
 Name:           libfprint-tod
 
 Version:        1.94.6+tod1
-Release:        5%{?dist}
+Release:        %autorelease
 Summary:        Toolkit for fingerprint scanner (TOD version)
 
 License:        LGPLv2+
@@ -45,8 +45,8 @@ developing applications that use %{name}.
 
 %build
 # Include the virtual image driver for integration tests
-# %meson -Ddrivers=all -Dinstalled-tests=false
-%meson -Ddrivers=all
+# meson -Ddrivers=all -Dinstalled-tests=false
+%meson -Ddrivers=all --buildtype release
 %meson_build
 
 %install
@@ -55,7 +55,7 @@ mkdir -vp %{buildroot}/usr/lib64/libfprint-2/tod-1
 %ldconfig_scriptlets
 
 %check
-# %meson_test -t 4
+%meson_test -t 4
 
 %files
 %license COPYING
@@ -70,8 +70,8 @@ mkdir -vp %{buildroot}/usr/lib64/libfprint-2/tod-1
 %doc HACKING.md
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/libfprint-2.pc
-%{_libdir}/pkgconfig/libfprint-2-tod-1.pc
+%{_libdir}/pkgconfig/%{name}-2.pc
+%{_libdir}/pkgconfig/{name}-2-tod-1.pc
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/gtk-doc/html/libfprint-2/
 
