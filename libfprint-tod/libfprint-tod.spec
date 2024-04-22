@@ -1,7 +1,7 @@
 Name:           libfprint-tod
 
 Version:        1.94.6+tod1
-Release:        3%{?dist}
+Release:        %autorelease
 Summary:        Toolkit for fingerprint scanner (TOD version)
 
 License:        LGPLv2+
@@ -45,7 +45,8 @@ developing applications that use %{name}.
 
 %build
 # Include the virtual image driver for integration tests
-%meson -Ddrivers=all -Dinstalled-tests=false
+# %meson -Ddrivers=all -Dinstalled-tests=false
+%meson -Ddrivers=all
 %meson_build
 
 %install
