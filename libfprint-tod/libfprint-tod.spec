@@ -46,8 +46,7 @@ developing applications that use %{name}.
 %build
 # Include the virtual image driver for integration tests
 # meson -Ddrivers=all -Dinstalled-tests=false
-# meson -Ddrivers=all --buildtype release
-%meson -Dgtk-examples=false -Dinstalled-tests=false -Dudev_hwdb=disabled 
+%meson -Ddrivers=all --buildtype release
 %meson_build
 
 %install
@@ -63,7 +62,7 @@ mkdir -vp %{buildroot}/usr/lib64/libfprint-2/tod-1
 %doc NEWS THANKS AUTHORS README.md
 %{_libdir}/*.so.*
 %{_libdir}/girepository-1.0/*.typelib
-# {_udevhwdbdir}/60-autosuspend-libfprint-2.hwdb
+%{_udevhwdbdir}/60-autosuspend-libfprint-2.hwdb
 %{_udevrulesdir}/70-libfprint-2.rules
 %dir /usr/lib64/libfprint-2/tod-1
 
