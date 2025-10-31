@@ -69,6 +69,7 @@ developing applications that use %{name}.
 %{_udevhwdbdir}/60-autosuspend-libfprint-2.hwdb
 %endif
 %{_udevrulesdir}/70-libfprint-2.rules
+%{_datadir}/metainfo/org.freedesktop.libfprint.metainfo.xml
  
 %files devel
 %doc HACKING.md
