@@ -2,7 +2,7 @@
 
 Name:           libfprint-tod
  
-Version:        1.94.9+tod1
+Version:        1.94.10+tod1
 Release:        %autorelease
 Summary:        Toolkit for fingerprint scanner (TOD version)
  
@@ -29,21 +29,21 @@ BuildRequires:  gobject-introspection-devel
 # For internal CI tests; umockdev 0.13.2 has an important locking fix
 BuildRequires:  python3-cairo python3-gobject cairo-devel
 BuildRequires:  umockdev >= 0.13.2
- 
+
 %description
 libfprint-tod offers support for consumer fingerprint reader devices.
- 
+
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
- 
+
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
- 
+
 %prep
 %autosetup -S git -n libfprint-v%{version}
- 
+
 %build
 # Include the virtual image driver for integration tests
 %meson \
@@ -56,10 +56,12 @@ developing applications that use %{name}.
 %endif
 	%{nil}
 %meson_build
+
 %install
 %meson_install
+
 %ldconfig_scriptlets
- 
+
 %files
 %license COPYING
 %doc NEWS THANKS AUTHORS README.md
@@ -70,7 +72,7 @@ developing applications that use %{name}.
 %endif
 %{_udevrulesdir}/70-libfprint-2.rules
 %{_datadir}/metainfo/org.freedesktop.libfprint.metainfo.xml
- 
+
 %files devel
 %doc HACKING.md
 %{_includedir}/*
@@ -79,6 +81,6 @@ developing applications that use %{name}.
 %{_libdir}/pkgconfig/libfprint-2-tod-1.pc
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/gtk-doc/html/libfprint-2/
- 
+
 %changelog
 %autochangelog
